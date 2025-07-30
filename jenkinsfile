@@ -1,6 +1,14 @@
 pipeline {
     agent any
-
+    environment {
+        SONAR_HOME = 'C:\\Users\\Administrator\\Documents\\tools\\sonar-scanner\\bin'
+        REPO_NAME  = 'https://github.com/Sakthivel119/html-sample-app.git'
+        BRANCH_NAME = 'master'
+        //SONAR_TOKEN  = credentials('ashu-sonar-project3-token')
+        //DOCKER_CREDS = 'ashutoshh-dockerhub'
+        //SONAR_PROJECT_KEY =  'ashu-day3'
+        //SONAR_SERVER_NAME = 'ashu-sonarqube' // name we have configured under jenkins global confir
+    }
     stages {
         // stage1
         stage('Hello') {
@@ -21,5 +29,11 @@ pipeline {
            
          }
      }
+      stage('taking code of github repo'){
+            steps {
+                echo 'clone repo to project'
+                git url: "${REPO_NAME}", branch: "${BRANCH_NAME}"
+            }
+        }
     }
 }
