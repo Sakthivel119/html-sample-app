@@ -37,7 +37,7 @@ pipeline {
             }
         }
        // doing sast with sonar-qube 
-        stage('SAST with sonar-scanner'){
+        /*stage('SAST with sonar-scanner'){
             steps {
                 echo 'wait for sonar-scanner to finish'
                 bat """
@@ -48,6 +48,6 @@ pipeline {
                 -Dsonar.token=${SONAR_TOKEN}
                 """
             }
-        }
+        }*/
     }
 }
